@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.icl.icl.web.user.dao.UserDao">
+    <insert id="insert" parameterType="com.icl.icl.web.user.UserInfo">
+        <selectKey keyProperty="userId" resultType="Integer" order="BEFORE">
+            SELECT IFNULL(MAX(userId), 0)+1 AS userId FROM icl_user
+        </selectKey>
+        INSERT INTO icl_user(
+            userName
+        ) VALUES(
+            #{userName}
+        )
+    </insert>
+</mapper>
